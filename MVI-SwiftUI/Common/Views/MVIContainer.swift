@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class MVIContainer<Intent, Model: ObservableObject>: ObservableObject {
+final class MVIContainer<Intent, Model>: ObservableObject {
 
     // MARK: Public
 
@@ -21,11 +21,11 @@ class MVIContainer<Intent, Model: ObservableObject>: ObservableObject {
 
     // MARK: Life cycle
 
-    init(intent: Intent, model: Model) {
+    init(intent: Intent, model: Model, modelChangePublisher: ObjectWillChangePublisher) {
         self.intent = intent
         self.model = model
 
-        model.objectWillChange.sink { [weak self] _ in
+        modelChangePublisher.sink { [weak self] _ in
             DispatchQueue.main.async { self?.objectWillChange.send() }
         }.store(in: &cancellable)
     }

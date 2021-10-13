@@ -10,7 +10,7 @@ import AVKit
 
 struct ItemView: View {
 
-    @StateObject private var container: MVIContainer<ItemIntent, ItemModel>
+    @StateObject private var container: MVIContainer<ItemIntentProtocol, ItemModelStatePotocol>
 
     private var intent: ItemIntentProtocol { container.intent }
     private var properties: ItemModelStatePotocol { container.model }
@@ -52,10 +52,14 @@ private extension ItemView {
 // MARK: - Builder
 
 extension ItemView {
+
     static func build(data: ItemIntent.ExternalData) -> some View {
         let model = ItemModel()
         let intent = ItemIntent(model: model, externalData: data)
-        let container = MVIContainer(intent: intent, model: model)
+        let container = MVIContainer(
+            intent: intent as ItemIntentProtocol,
+            model: model as ItemModelStatePotocol,
+            modelChangePublisher: model.objectWillChange)
         let view = ItemView(container: container)
         return view
     }

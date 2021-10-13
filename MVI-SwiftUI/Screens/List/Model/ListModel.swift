@@ -13,6 +13,8 @@ class ListModel: ObservableObject, ListModelStatePotocol {
 
     @Published var state: ScreenState = .loading
 
+    let loadingText = "Loading"
+    let navigationTitle = "Loading"
     let routerSubject = PassthroughSubject<ListRouter.ScreenType, Never>()
 }
 
@@ -22,7 +24,7 @@ extension ListModel {
     enum ScreenState {
         case loading
         case content(urlContents: [ListUrlContentView.StateViewModel])
-        case error
+        case error(text: String)
     }
 }
 
@@ -42,7 +44,7 @@ extension ListModel: ListModelActionsProtocol {
     }
 
     func dispalyError(_ error: Error) {
-        state = .error
+        state = .error(text: "Fail")
     }
 
     func routeToVideoPlayer(content: WWDCUrlContent) {

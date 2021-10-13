@@ -11,6 +11,8 @@ import Combine
 
 protocol ListModelStatePotocol {
     var state: ListModel.ScreenState { get }
+    var loadingText: String { get }
+    var navigationTitle: String { get }
     var routerSubject: PassthroughSubject<ListRouter.ScreenType, Never> { get }
 }
 

@@ -30,6 +30,7 @@ struct ListRouter: View {
 // MARK: - Helper classes
 
 extension ListRouter {
+
     enum ScreenType: ScreenKey {
         case videoPlayer(title: String, url: URL)
         case alert(title: String, message: String?)

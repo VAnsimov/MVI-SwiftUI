@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
 
-    @StateObject private var container: MVIContainer<ListIntent, ListModel>
+    @StateObject private var container: MVIContainer<ListIntentProtocol, ListModelStatePotocol>
 
     private var intent: ListIntentProtocol { container.intent }
     private var properties: ListModelStatePotocol { container.model }
@@ -19,7 +19,7 @@ struct ListView: View {
             bodyView()
                 .onAppear(perform: intent.viewOnAppear)
                 .overlay(routerView())
-                .navigationTitle("Video")
+                .navigationTitle(properties.navigationTitle)
         }
     }
 }
@@ -34,7 +34,7 @@ private extension ListView {
             case .loading:
                 ZStack {
                     Color.white
-                    Text("Loading")
+                    Text(properties.loadingText)
                 }
 
             case let .content(urlContents):
@@ -49,16 +49,16 @@ private extension ListView {
                     }.padding(.vertical)
                 }
 
-            case .error:
+            case let .error(text):
                 ZStack {
                     Color.white
-                    Text("Fail")
+                    Text(text)
                 }
             }
         }
     }
 
-    private func routerView() -> some View {
+    func routerView() -> some View {
         ListRouter(routePublisher: properties.routerSubject.eraseToAnyPublisher())
     }
 }
@@ -66,10 +66,14 @@ private extension ListView {
 // MARK: - Builder
 
 extension ListView {
+    
     static func build(data: ListIntent.ExternalData) -> some View {
         let model = ListModel()
         let intent = ListIntent(model: model, externalData: data, urlService: WWDCUrlService())
-        let container = MVIContainer(intent: intent, model: model)
+        let container = MVIContainer(
+            intent: intent as ListIntentProtocol,
+            model: model as ListModelStatePotocol,
+            modelChangePublisher: model.objectWillChange)
         let view = ListView(container: container)
         return view
     }

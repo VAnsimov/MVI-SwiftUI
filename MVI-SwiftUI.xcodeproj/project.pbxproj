@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				C02176AB26F314D8004149AE /* ListView.swift */,
-				C02176CC26F3766E004149AE /* Views */,
+				C02176CC26F3766E004149AE /* Custom Elements */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,12 +203,12 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		C02176CC26F3766E004149AE /* Views */ = {
+		C02176CC26F3766E004149AE /* Custom Elements */ = {
 			isa = PBXGroup;
 			children = (
 				C02176CD26F3768E004149AE /* ListUrlContentView.swift */,
 			);
-			path = Views;
+			path = "Custom Elements";
 			sourceTree = "<group>";
 		};
 		C02176CF26F38303004149AE /* Item */ = {
