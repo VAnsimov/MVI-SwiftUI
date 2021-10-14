@@ -25,8 +25,9 @@ final class MVIContainer<Intent, Model>: ObservableObject {
         self.intent = intent
         self.model = model
 
-        modelChangePublisher.sink { [weak self] _ in
-            DispatchQueue.main.async { self?.objectWillChange.send() }
-        }.store(in: &cancellable)
+        modelChangePublisher
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: objectWillChange.send)
+            .store(in: &cancellable)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 import Combine
 
-class ListModel: ObservableObject, ListModelStatePotocol {
+final class ListModel: ObservableObject, ListModelStatePotocol {
 
     @Published var state: ScreenState = .loading
 

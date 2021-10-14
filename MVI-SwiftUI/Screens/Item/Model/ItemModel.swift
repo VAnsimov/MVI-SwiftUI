@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import AVKit
 
-class ItemModel: ObservableObject, ItemModelStatePotocol {
+final class ItemModel: ObservableObject, ItemModelStatePotocol {
 
     @Published var title: String = ""
     @Published var playingText: String = "play"
