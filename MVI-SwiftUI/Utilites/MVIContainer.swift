@@ -1,5 +1,5 @@
 //
-//  Router.swift
+//  MVIContainer.swift
 //  MVI-SwiftUI
 //
 //  Created by Vyacheslav Ansimov.

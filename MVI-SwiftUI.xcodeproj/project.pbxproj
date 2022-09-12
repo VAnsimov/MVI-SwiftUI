@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B82B43328CD9B3A00622105 /* RouterSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */; };
+		9B82B43628CD9B3A00622105 /* RouterNavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42828CD9B3A00622105 /* RouterNavigationModifier.swift */; };
+		9B82B43728CD9B3A00622105 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */; };
+		9B82B43928CDAC8900622105 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */; };
+		9B82B43B28CDB55B00622105 /* ListView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43A28CDB55B00622105 /* ListView+Build.swift */; };
+		9B82B44428CE09B700622105 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44328CE09B700622105 /* RouterProtocol.swift */; };
+		9B82B44628CE111200622105 /* ItemView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44528CE111200622105 /* ItemView+Build.swift */; };
+		9B82B44828CE15AA00622105 /* ListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44728CE15AA00622105 /* ListTypes.swift */; };
+		9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44928CED71B00622105 /* ItemTypes.swift */; };
+		9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */; };
 		C021768726F313B5004149AE /* MVI_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */; };
 		C021768B26F313B7004149AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768A26F313B7004149AE /* Assets.xcassets */; };
 		C021768E26F313B7004149AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768D26F313B7004149AE /* Preview Assets.xcassets */; };
@@ -16,7 +26,6 @@
 		C02176B326F314D8004149AE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02176AB26F314D8004149AE /* ListView.swift */; };
 		C02176B426F314D8004149AE /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02176AC26F314D8004149AE /* ListModel.swift */; };
 		C02176B526F314D8004149AE /* ListModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02176AD26F314D8004149AE /* ListModelProtocol.swift */; };
-		C02176BE26F3154D004149AE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02176BD26F3154D004149AE /* Router.swift */; };
 		C02176C026F315A8004149AE /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02176BF26F315A8004149AE /* MVIContainer.swift */; };
 		C02176C426F36FAA004149AE /* WWDCUrlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02176C326F36FAA004149AE /* WWDCUrlService.swift */; };
 		C02176C726F370D8004149AE /* SwiftUIData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C02176C626F370D8004149AE /* SwiftUIData.plist */; };
@@ -31,6 +40,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterSheetModifier.swift; sourceTree = "<group>"; };
+		9B82B42828CD9B3A00622105 /* RouterNavigationModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterNavigationModifier.swift; sourceTree = "<group>"; };
+		9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
+		9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
+		9B82B43A28CDB55B00622105 /* ListView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+Build.swift"; sourceTree = "<group>"; };
+		9B82B44328CE09B700622105 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		9B82B44528CE111200622105 /* ItemView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemView+Build.swift"; sourceTree = "<group>"; };
+		9B82B44728CE15AA00622105 /* ListTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTypes.swift; sourceTree = "<group>"; };
+		9B82B44928CED71B00622105 /* ItemTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypes.swift; sourceTree = "<group>"; };
+		9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterScreenProtocol.swift; sourceTree = "<group>"; };
 		C021768326F313B5004149AE /* MVI-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVI-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVI_SwiftUIApp.swift; sourceTree = "<group>"; };
 		C021768A26F313B7004149AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +61,6 @@
 		C02176AB26F314D8004149AE /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		C02176AC26F314D8004149AE /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		C02176AD26F314D8004149AE /* ListModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModelProtocol.swift; sourceTree = "<group>"; };
-		C02176BD26F3154D004149AE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C02176BF26F315A8004149AE /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
 		C02176C326F36FAA004149AE /* WWDCUrlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDCUrlService.swift; sourceTree = "<group>"; };
 		C02176C626F370D8004149AE /* SwiftUIData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SwiftUIData.plist; sourceTree = "<group>"; };
@@ -67,6 +85,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B82B41428CD9A2000622105 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				9B82B42428CD9B3A00622105 /* Router */,
+				C02176BF26F315A8004149AE /* MVIContainer.swift */,
+			);
+			path = Utilites;
+			sourceTree = "<group>";
+		};
+		9B82B42428CD9B3A00622105 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9B82B44328CE09B700622105 /* RouterProtocol.swift */,
+				9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */,
+				9BA0B40928CF06F800B3F215 /* Modifier */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9BA0B40928CF06F800B3F215 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */,
+				9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */,
+				9B82B42828CD9B3A00622105 /* RouterNavigationModifier.swift */,
+				9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		C021767A26F313B5004149AE = {
 			isa = PBXGroup;
 			children = (
@@ -86,12 +134,13 @@
 		C021768526F313B5004149AE /* MVI-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */,
-				C02176BA26F3152D004149AE /* Common */,
-				C021769526F31403004149AE /* Screens */,
-				C021768A26F313B7004149AE /* Assets.xcassets */,
 				C021768F26F313B7004149AE /* Info.plist */,
+				C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */,
+				C021768A26F313B7004149AE /* Assets.xcassets */,
 				C021768C26F313B7004149AE /* Preview Content */,
+				C021769526F31403004149AE /* Screens */,
+				C02176C126F36F93004149AE /* Services */,
+				9B82B41428CD9A2000622105 /* Utilites */,
 			);
 			path = "MVI-SwiftUI";
 			sourceTree = "<group>";
@@ -116,6 +165,7 @@
 		C02176A526F3145F004149AE /* List */ = {
 			isa = PBXGroup;
 			children = (
+				9B82B44728CE15AA00622105 /* ListTypes.swift */,
 				C02176B826F314EB004149AE /* Model */,
 				C02176B726F314E6004149AE /* View */,
 				C02176B626F314E0004149AE /* Intent */,
@@ -127,8 +177,8 @@
 		C02176B626F314E0004149AE /* Intent */ = {
 			isa = PBXGroup;
 			children = (
-				C02176A826F314D8004149AE /* ListIntentProtocol.swift */,
 				C02176A626F314D8004149AE /* ListIntent.swift */,
+				C02176A826F314D8004149AE /* ListIntentProtocol.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -137,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				C02176AB26F314D8004149AE /* ListView.swift */,
+				9B82B43A28CDB55B00622105 /* ListView+Build.swift */,
 				C02176CC26F3766E004149AE /* Custom Elements */,
 			);
 			path = View;
@@ -145,8 +196,8 @@
 		C02176B826F314EB004149AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C02176AD26F314D8004149AE /* ListModelProtocol.swift */,
 				C02176AC26F314D8004149AE /* ListModel.swift */,
+				C02176AD26F314D8004149AE /* ListModelProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,24 +208,6 @@
 				C02176A926F314D8004149AE /* ListRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		C02176BA26F3152D004149AE /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C02176C126F36F93004149AE /* Services */,
-				C02176BB26F31537004149AE /* Views */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		C02176BB26F31537004149AE /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C02176BF26F315A8004149AE /* MVIContainer.swift */,
-				C02176BD26F3154D004149AE /* Router.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C02176C126F36F93004149AE /* Services */ = {
@@ -214,6 +247,7 @@
 		C02176CF26F38303004149AE /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				9B82B44928CED71B00622105 /* ItemTypes.swift */,
 				C02176E026F38385004149AE /* Model */,
 				C02176E326F38396004149AE /* View */,
 				C02176E226F38392004149AE /* Intent */,
@@ -225,8 +259,8 @@
 		C02176E026F38385004149AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C02176D726F38380004149AE /* ItemModelProtocol.swift */,
 				C02176D626F38380004149AE /* ItemModel.swift */,
+				C02176D726F38380004149AE /* ItemModelProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,8 +276,8 @@
 		C02176E226F38392004149AE /* Intent */ = {
 			isa = PBXGroup;
 			children = (
-				C02176D226F38380004149AE /* ItemIntentProtocol.swift */,
 				C02176D026F38380004149AE /* ItemIntent.swift */,
+				C02176D226F38380004149AE /* ItemIntentProtocol.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -251,6 +285,7 @@
 		C02176E326F38396004149AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B82B44528CE111200622105 /* ItemView+Build.swift */,
 				C02176D526F38380004149AE /* ItemView.swift */,
 			);
 			path = View;
@@ -326,24 +361,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B82B44828CE15AA00622105 /* ListTypes.swift in Sources */,
 				C02176B026F314D8004149AE /* ListIntentProtocol.swift in Sources */,
 				C02176DD26F38380004149AE /* ItemView.swift in Sources */,
 				C02176AE26F314D8004149AE /* ListIntent.swift in Sources */,
 				C02176DA26F38380004149AE /* ItemIntentProtocol.swift in Sources */,
 				C02176B326F314D8004149AE /* ListView.swift in Sources */,
 				C02176C426F36FAA004149AE /* WWDCUrlService.swift in Sources */,
-				C02176BE26F3154D004149AE /* Router.swift in Sources */,
+				9B82B43328CD9B3A00622105 /* RouterSheetModifier.swift in Sources */,
 				C02176C026F315A8004149AE /* MVIContainer.swift in Sources */,
+				9B82B43628CD9B3A00622105 /* RouterNavigationModifier.swift in Sources */,
 				C02176B426F314D8004149AE /* ListModel.swift in Sources */,
 				C02176B526F314D8004149AE /* ListModelProtocol.swift in Sources */,
 				C02176DE26F38380004149AE /* ItemModel.swift in Sources */,
 				C02176DB26F38380004149AE /* ItemRouter.swift in Sources */,
 				C02176B126F314D8004149AE /* ListRouter.swift in Sources */,
+				9B82B43B28CDB55B00622105 /* ListView+Build.swift in Sources */,
 				C02176DF26F38380004149AE /* ItemModelProtocol.swift in Sources */,
 				C02176CE26F3771C004149AE /* ListUrlContentView.swift in Sources */,
+				9B82B44628CE111200622105 /* ItemView+Build.swift in Sources */,
+				9B82B43728CD9B3A00622105 /* RouterCloseModifier.swift in Sources */,
 				C02176C926F3748F004149AE /* WWDCUrlServiceProtocol.swift in Sources */,
+				9B82B44428CE09B700622105 /* RouterProtocol.swift in Sources */,
+				9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */,
+				9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */,
 				C021768726F313B5004149AE /* MVI_SwiftUIApp.swift in Sources */,
 				C02176D826F38380004149AE /* ItemIntent.swift in Sources */,
+				9B82B43928CDAC8900622105 /* RouterAlertModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

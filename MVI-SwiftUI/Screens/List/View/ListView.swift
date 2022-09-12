@@ -9,17 +9,28 @@ import SwiftUI
 
 struct ListView: View {
 
-    @StateObject private var container: MVIContainer<ListIntentProtocol, ListModelStatePotocol>
+    @StateObject var container: MVIContainer<ListIntentProtocol, ListModelStatePotocol>
 
     private var intent: ListIntentProtocol { container.intent }
-    private var properties: ListModelStatePotocol { container.model }
+    private var state: ListModelStatePotocol { container.model }
 
     var body: some View {
         NavigationView {
-            bodyView()
-                .onAppear(perform: intent.viewOnAppear)
-                .overlay(routerView())
-                .navigationTitle(properties.navigationTitle)
+            ZStack {
+                switch state.contentState {
+                case .loading:
+                    LoadingContent(text: state.loadingText)
+
+                case let .content(urlContents):
+                    ListItems(intent: intent, urlContents: urlContents)
+
+                case let .error(text):
+                    ErrorContent(text: text)
+                }
+            }
+            .onAppear(perform: intent.viewOnAppear)
+            .navigationTitle(state.navigationTitle)
+            .modifier(ListRouter(subjects: state.routerSubject, intent: intent))
         }
     }
 }
@@ -28,54 +39,50 @@ struct ListView: View {
 
 private extension ListView {
 
-    func bodyView() -> some View {
-        ZStack {
-            switch properties.state {
-            case .loading:
-                ZStack {
-                    Color.white
-                    Text(properties.loadingText)
-                }
+    // MARK: Loading View
 
-            case let .content(urlContents):
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(urlContents, id: \.self) {
-                            ListUrlContentView(state: $0, didTap: {
-                                self.intent.onTapUrlContent(id: $0)
-                            })
-                            .padding(.horizontal)
-                        }
-                    }.padding(.vertical)
-                }
+    private struct LoadingContent: View {
+        let text: String
 
-            case let .error(text):
-                ZStack {
-                    Color.white
-                    Text(text)
-                }
+        var body: some View {
+            ZStack {
+                Color.white
+                Text(text)
             }
         }
     }
 
-    func routerView() -> some View {
-        ListRouter(routePublisher: properties.routerSubject.eraseToAnyPublisher())
+    // MARK: ListItems View
+
+    private struct ListItems: View {
+        let intent: ListIntentProtocol
+        let urlContents: [ListUrlContentView.StateViewModel]
+
+        var body: some View {
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    ForEach(urlContents, id: \.self) {
+                        ListUrlContentView(state: $0, didTap: {
+                            intent.onTapUrlContent(id: $0)
+                        })
+                        .padding(.horizontal)
+                    }
+                }.padding(.vertical)
+            }
+        }
     }
-}
 
-// MARK: - Builder
+    // MARK: Error View
 
-extension ListView {
-    
-    static func build(data: ListIntent.ExternalData) -> some View {
-        let model = ListModel()
-        let intent = ListIntent(model: model, externalData: data, urlService: WWDCUrlService())
-        let container = MVIContainer(
-            intent: intent as ListIntentProtocol,
-            model: model as ListModelStatePotocol,
-            modelChangePublisher: model.objectWillChange)
-        let view = ListView(container: container)
-        return view
+    private struct ErrorContent: View {
+        let text: String
+
+        var body: some View {
+            ZStack {
+                Color.white
+                Text(text)
+            }
+        }
     }
 }
 

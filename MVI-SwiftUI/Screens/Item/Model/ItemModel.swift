@@ -15,7 +15,7 @@ final class ItemModel: ObservableObject, ItemModelStatePotocol {
     @Published var playingText: String = "play"
     @Published var player: AVPlayer = AVPlayer(playerItem: nil)
 
-    let routerSubject = PassthroughSubject<ItemRouter.ScreenType, Never>()
+    let routerSubjects = ItemRouter.Subjects()
 }
 
 // MARK: - Actions Protocol
@@ -31,6 +31,10 @@ extension ItemModel: ItemModelActionsProtocol {
         player.play()
         changePlaingText(timeControlStatus: player.timeControlStatus)
     }
+
+    func stop() {
+        player.pause()
+    }
     
     func togglePlaing() {
         switch player.timeControlStatus {
@@ -44,10 +48,16 @@ extension ItemModel: ItemModelActionsProtocol {
             break
         }
         changePlaingText(timeControlStatus: player.timeControlStatus)
+        closeScreen()
     }
+}
 
-    func exit() {
-        routerSubject.send(.exit)
+// MARK: - Route Protocol
+
+extension ItemModel: ItemModelRouterProtocol {
+
+    func closeScreen() {
+        routerSubjects.close.send(())
     }
 }
 

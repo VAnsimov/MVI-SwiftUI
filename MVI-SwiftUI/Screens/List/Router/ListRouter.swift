@@ -8,66 +8,52 @@
 import SwiftUI
 import Combine
 
-struct ListRouter: View {
+struct ListRouter: RouterProtocol {
+    typealias RouterScreenType = ScreenType
+    typealias RouterAlertType = AlertScreen
 
-    // MARK: Public
-
-    let routePublisher: AnyPublisher<ScreenType, Never>
-
-    // MARK: Life cycle
-
-    var body: some View {
-        Router(routePublisher: routePublisher) { screenType, active in
-            VStack {
-                NavigationLink("", destination: itemView(screenType: screenType),
-                               isActive: active.isActive(key: .screenVideoPlayerKey))
-            }
-            .alert(isPresented: active.isActive(key: .screenAlertKey)) { alertView(screenType: screenType) }
-        }
-    }
+    let subjects: Subjects
+    let intent: ListIntentProtocol
 }
 
-// MARK: - Helper classes
+// MARK: - Navigation Screens
 
 extension ListRouter {
-
-    enum ScreenType: ScreenKey {
+    enum ScreenType: RouterScreenProtocol {
         case videoPlayer(title: String, url: URL)
-        case alert(title: String, message: String?)
 
-        var key: String {
+        var routeType: RouterScreenPresentationType {
             switch self {
-            case .videoPlayer: return .screenVideoPlayerKey
-            case .alert: return .screenAlertKey
+            case .videoPlayer:
+                return .navigationLink
             }
         }
     }
-}
-
-// MARK: - Private - Views
-
-extension ListRouter {
 
     @ViewBuilder
-    func itemView(screenType: ScreenType?) -> some View {
-        if case let .videoPlayer(title, url) = screenType {
+    func makeScreen(type: RouterScreenType) -> some View {
+        switch type {
+        case let .videoPlayer(title, url):
             ItemView.build(data: .init(title: title, url: url))
-        } else {
-            EmptyView()
         }
     }
 
-    func alertView(screenType: ScreenType?) -> Alert {
-        guard case let .alert(title, message) = screenType else { return Alert(title: Text("")) }
-        return Alert(title: Text(title), message: message?.toText(), dismissButton: .cancel())
-    }
+    func onDismiss(screenType: RouterScreenType) {}
 }
 
-// MARK: - Extensions
+// MARK: - Alerts
 
-private extension String {
-    static var screenVideoPlayerKey: String { "VideoPlayerKey" }
-    static var screenAlertKey: String { "AlertKey" }
+extension ListRouter {
+    enum AlertScreen: RouterAlertScreenProtocol {
+        case defaultAlert(title: String, message: String?)
+    }
 
-    func toText() -> Text { Text(self) }
+    func makeAlert(type: RouterAlertType) -> Alert {
+        switch type {
+        case let .defaultAlert(title, message):
+            return Alert(title: Text(title),
+                         message: message.map { Text($0) },
+                         dismissButton: .cancel())
+        }
+    }
 }

@@ -10,15 +10,17 @@ import AVKit
 
 struct ItemView: View {
 
-    @StateObject private var container: MVIContainer<ItemIntentProtocol, ItemModelStatePotocol>
+    @StateObject var container: MVIContainer<ItemIntentProtocol, ItemModelStatePotocol>
 
     private var intent: ItemIntentProtocol { container.intent }
-    private var properties: ItemModelStatePotocol { container.model }
+    private var state: ItemModelStatePotocol { container.model }
 
     var body: some View {
         bodyView()
             .onAppear(perform: intent.viewOnAppear)
-            .overlay(routerView())
+            .navigationBarTitle(state.title, displayMode: .inline)
+            .modifier(ItemRouter(subjects: state.routerSubjects, intent: intent))
+            .onDisappear(perform: intent.viewonDisappear)
     }
 }
 
@@ -28,40 +30,19 @@ private extension ItemView {
 
     func bodyView() -> some View {
         VStack {
-            VideoPlayer(player: properties.player)
+            VideoPlayer(player: state.player)
                 .cornerRadius(8)
 
             Button {
                 self.intent.didTapPlaying()
             } label: {
-                Text(properties.playingText)
+                Text(state.playingText)
                     .foregroundColor(.black)
                     .padding()
             }
             
         }
         .padding()
-        .navigationBarTitle(properties.title, displayMode: .inline)
-    }
-
-    func routerView() -> some View {
-        ItemRouter(routePublisher: properties.routerSubject.eraseToAnyPublisher())
-    }
-}
-
-// MARK: - Builder
-
-extension ItemView {
-
-    static func build(data: ItemIntent.ExternalData) -> some View {
-        let model = ItemModel()
-        let intent = ItemIntent(model: model, externalData: data)
-        let container = MVIContainer(
-            intent: intent as ItemIntentProtocol,
-            model: model as ItemModelStatePotocol,
-            modelChangePublisher: model.objectWillChange)
-        let view = ItemView(container: container)
-        return view
     }
 }
 

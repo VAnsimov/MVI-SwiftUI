@@ -8,46 +8,42 @@
 import SwiftUI
 import Combine
 
-struct ItemRouter: View {
+struct ItemRouter: RouterProtocol {
+    typealias RouterScreenType = ScreenType
+    typealias RouterAlertType = AlertScreen
 
-    // MARK: Public
+    let subjects: Subjects
+    let intent: ItemIntentProtocol
 
-    let routePublisher: AnyPublisher<ScreenType, Never>
-
-    // MARK: Private
-
-    @Environment(\.presentationMode) private var presentationMode
-
-    // MARK: Life cycle
-
-    var body: some View {
-        Router(routePublisher: routePublisher) { screenType, active in
-            VStack {
-                NavigationLink("", destination: EmptyView(), isActive: .init(get: { false }, set: { _ in }))
-            }
-        }.onReceive(routePublisher) {
-            guard case .exit = $0 else { return }
-            self.presentationMode.wrappedValue.dismiss()
-        }
-    }
 }
 
-// MARK: - Helper classes
+// MARK: - Navigation Screens
 
 extension ItemRouter {
-    enum ScreenType: ScreenKey {
-        case exit
+    enum ScreenType: RouterScreenProtocol {
+        case unowned
 
-        var key: String {
-            switch self {
-            case .exit: return .screenExitKey
-            }
-        }
+        var routeType: RouterScreenPresentationType { .navigationLink }
     }
+
+    @ViewBuilder
+    func makeScreen(type: RouterScreenType) -> some View { EmptyView() }
+    func onDismiss(screenType: RouterScreenType) {}
 }
 
-// MARK: - Extensions
+// MARK: - Alerts
 
-private extension String {
-    static var screenExitKey: String { "VideoPlayerKey" }
+extension ItemRouter {
+    enum AlertScreen: RouterAlertScreenProtocol {
+        case defaultAlert(title: String, message: String?)
+    }
+
+    func makeAlert(type: RouterAlertType) -> Alert {
+        switch type {
+        case let .defaultAlert(title, message):
+            return Alert(title: Text(title),
+                         message: message.map { Text($0) },
+                         dismissButton: .cancel())
+        }
+    }
 }

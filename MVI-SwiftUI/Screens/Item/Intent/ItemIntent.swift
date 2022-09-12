@@ -13,13 +13,24 @@ import SwiftUI
 
 class ItemIntent {
 
-    private let model: ItemModelActionsProtocol
-    private let externalData: ExternalData
+    // MARK: Model
 
-    init(model: ItemModelActionsProtocol, externalData: ExternalData) {
+    private let model: ItemModelActionsProtocol
+    private let routeModel: ItemModelRouterProtocol
+
+    // MARK: Busines Data
+
+    private let externalData: ItemTypes.Intent.ExternalData
+
+    // MARK: Life cycle
+
+    init(model: ItemModelActionsProtocol & ItemModelRouterProtocol,
+         externalData: ItemTypes.Intent.ExternalData) {
         self.externalData = externalData
         self.model = model
+        self.routeModel = model
     }
+
 }
 
 // MARK: - Public
@@ -31,6 +42,10 @@ extension ItemIntent: ItemIntentProtocol {
         model.play()
     }
 
+    func viewonDisappear() {
+        model.stop()
+    }
+
     func didTapPlaying() {
         model.togglePlaing()
     }
@@ -38,7 +53,7 @@ extension ItemIntent: ItemIntentProtocol {
 
 // MARK: - Helper classes
 
-extension ItemIntent {
+extension ItemTypes.Intent {
     struct ExternalData {
         let title: String
         let url: URL
