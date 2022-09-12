@@ -45,7 +45,23 @@ Container is independent of the life cycle of the View because it is @StateObjec
 
 ![](README_sources/image_004.png)
 
-## Maintainers
+# Templates for Xcode
 
+### xctemplate
+
+The template can be found in Templates-for-Xcode/xctemplate
+
+Add the file *.xctemplate to the folder:
+/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates
+
+The template can be found in the Xcode menu
+File -> New -> File...
+
+### Router
+
+Take the classes from the Templates-for-Xcode/Router folder and transfer them to your project
+
+
+## Maintainers
 
 * [Vyacheslav Ansimov](https://www.linkedin.com/in/vansimov/)

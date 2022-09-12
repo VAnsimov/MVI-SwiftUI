@@ -7,6 +7,6 @@
 
 protocol ItemIntentProtocol {
     func viewOnAppear()
-    func viewonDisappear()
+    func viewOnDisappear()
     func didTapPlaying()
 }

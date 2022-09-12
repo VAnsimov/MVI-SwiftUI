@@ -1,29 +1,25 @@
-//
-//  ListRouter.swift
-//  MVI-SwiftUI
-//
-//  Created by Vyacheslav Ansimov.
-//
+//___FILEHEADER___
 
 import SwiftUI
 
-struct ListRouter: RouterProtocol {
+struct ___VARIABLE_sceneName___Router: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: ListIntentProtocol
+    let intent: ___VARIABLE_sceneName___IntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension ListRouter {
+extension ___VARIABLE_sceneName___Router {
     enum ScreenType: RouterScreenProtocol {
-        case videoPlayer(title: String, url: URL)
+        case unownedOne
+        case unownedTwo
 
         var routeType: RouterScreenPresentationType {
             switch self {
-            case .videoPlayer:
+            case .unownedOne, .unownedTwo:
                 return .navigationLink
             }
         }
@@ -32,8 +28,11 @@ extension ListRouter {
     @ViewBuilder
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
-        case let .videoPlayer(title, url):
-            ItemView.build(data: .init(title: title, url: url))
+        case .unownedOne:
+            EmptyView()
+
+        case .unownedTwo:
+            EmptyView()
         }
     }
 
@@ -42,7 +41,7 @@ extension ListRouter {
 
 // MARK: - Alerts
 
-extension ListRouter {
+extension ___VARIABLE_sceneName___Router {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }

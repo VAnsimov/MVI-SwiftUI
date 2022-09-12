@@ -15,7 +15,7 @@ final class ItemModel: ObservableObject, ItemModelStatePotocol {
     @Published var playingText: String = "play"
     @Published var player: AVPlayer = AVPlayer(playerItem: nil)
 
-    let routerSubjects = ItemRouter.Subjects()
+    let routerSubject = ItemRouter.Subjects()
 }
 
 // MARK: - Actions Protocol
@@ -56,7 +56,7 @@ extension ItemModel: ItemModelActionsProtocol {
 extension ItemModel: ItemModelRouterProtocol {
 
     func closeScreen() {
-        routerSubjects.close.send(())
+        routerSubject.close.send(())
     }
 }
 

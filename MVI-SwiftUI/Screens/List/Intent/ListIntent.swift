@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 class ListIntent {
 
@@ -19,7 +18,7 @@ class ListIntent {
 
     private let urlService: WWDCUrlServiceProtocol
 
-    // MARK: Busines Data
+    // MARK: Business Data
 
     private let externalData: ListTypes.Intent.ExternalData
     private var contents: [WWDCUrlContent] = []

@@ -6,10 +6,6 @@
 //
 
 import SwiftUI
-import Combine
-
-
-import SwiftUI
 
 class ItemIntent {
 
@@ -18,7 +14,7 @@ class ItemIntent {
     private weak var model: ItemModelActionsProtocol?
     private weak var routeModel: ItemModelRouterProtocol?
 
-    // MARK: Busines Data
+    // MARK: Business Data
 
     private let externalData: ItemTypes.Intent.ExternalData
 
@@ -42,7 +38,7 @@ extension ItemIntent: ItemIntentProtocol {
         model?.play()
     }
 
-    func viewonDisappear() {
+    func viewOnDisappear() {
         model?.stop()
     }
 

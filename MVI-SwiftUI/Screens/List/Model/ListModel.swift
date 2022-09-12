@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
-import Combine
 
 final class ListModel: ObservableObject, ListModelStatePotocol {
 

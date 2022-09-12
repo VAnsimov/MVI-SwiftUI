@@ -13,7 +13,7 @@ protocol ItemModelStatePotocol {
     var title: String { get }
     var playingText: String { get }
     var player: AVPlayer { get }
-    var routerSubjects: ItemRouter.Subjects { get }
+    var routerSubject: ItemRouter.Subjects { get }
 }
 
 // MARK: - Intent Actions
