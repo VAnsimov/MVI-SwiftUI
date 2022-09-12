@@ -12,8 +12,8 @@ class ListIntent {
 
     // MARK: Model
 
-    private let model: ListModelActionsProtocol
-    private let routeModel: ListModelRouterProtocol
+    private weak var model: ListModelActionsProtocol?
+    private weak var routeModel: ListModelRouterProtocol?
 
     // MARK: Services
 
@@ -41,23 +41,23 @@ class ListIntent {
 extension ListIntent: ListIntentProtocol {
 
     func viewOnAppear() {
-        model.dispalyLoading()
+        model?.dispalyLoading()
 
         urlService.fetch(contnet: .swiftUI) { [weak self] result in
             switch result {
             case let .success(contents):
                 self?.contents = contents
-                self?.model.update(contents: contents)
+                self?.model?.update(contents: contents)
 
             case let .failure(error):
-                self?.model.dispalyError(error)
+                self?.model?.dispalyError(error)
             }
         }
     }
 
     func onTapUrlContent(id: String) {
         guard let content = contents.first(where: { $0.id == id }) else { return }
-        routeModel.routeToVideoPlayer(content: content)
+        routeModel?.routeToVideoPlayer(content: content)
     }
 }
 

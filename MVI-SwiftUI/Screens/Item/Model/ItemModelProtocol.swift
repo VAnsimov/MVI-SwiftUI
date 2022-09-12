@@ -18,7 +18,7 @@ protocol ItemModelStatePotocol {
 
 // MARK: - Intent Actions
 
-protocol ItemModelActionsProtocol {
+protocol ItemModelActionsProtocol: AnyObject {
     func setupScreen(url: URL, title: String)
     func play()
     func stop()
@@ -27,6 +27,6 @@ protocol ItemModelActionsProtocol {
 
 // MARK: - Route
 
-protocol ItemModelRouterProtocol {
+protocol ItemModelRouterProtocol: AnyObject {
     func closeScreen()
 }

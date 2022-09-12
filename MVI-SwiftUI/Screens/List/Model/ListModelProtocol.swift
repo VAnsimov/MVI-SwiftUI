@@ -21,7 +21,7 @@ protocol ListModelStatePotocol {
 
 // MARK: - Intent Actions
 
-protocol ListModelActionsProtocol {
+protocol ListModelActionsProtocol: AnyObject {
     func dispalyLoading()
     func update(contents: [WWDCUrlContent])
     func dispalyError(_ error: Error)

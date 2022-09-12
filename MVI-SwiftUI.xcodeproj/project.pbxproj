@@ -17,6 +17,7 @@
 		9B82B44828CE15AA00622105 /* ListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44728CE15AA00622105 /* ListTypes.swift */; };
 		9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44928CED71B00622105 /* ItemTypes.swift */; };
 		9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */; };
+		9BA0B40B28CF20FA00B3F215 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9BA0B40A28CF20FA00B3F215 /* README.md */; };
 		C021768726F313B5004149AE /* MVI_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */; };
 		C021768B26F313B7004149AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768A26F313B7004149AE /* Assets.xcassets */; };
 		C021768E26F313B7004149AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768D26F313B7004149AE /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		9B82B44728CE15AA00622105 /* ListTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTypes.swift; sourceTree = "<group>"; };
 		9B82B44928CED71B00622105 /* ItemTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypes.swift; sourceTree = "<group>"; };
 		9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterScreenProtocol.swift; sourceTree = "<group>"; };
+		9BA0B40A28CF20FA00B3F215 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C021768326F313B5004149AE /* MVI-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVI-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVI_SwiftUIApp.swift; sourceTree = "<group>"; };
 		C021768A26F313B7004149AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		C021767A26F313B5004149AE = {
 			isa = PBXGroup;
 			children = (
+				9BA0B40A28CF20FA00B3F215 /* README.md */,
 				C021768526F313B5004149AE /* MVI-SwiftUI */,
 				C021768426F313B5004149AE /* Products */,
 			);
@@ -350,6 +353,7 @@
 			files = (
 				C021768E26F313B7004149AE /* Preview Assets.xcassets in Resources */,
 				C021768B26F313B7004149AE /* Assets.xcassets in Resources */,
+				9BA0B40B28CF20FA00B3F215 /* README.md in Resources */,
 				C02176C726F370D8004149AE /* SwiftUIData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,7 +48,6 @@ extension ItemModel: ItemModelActionsProtocol {
             break
         }
         changePlaingText(timeControlStatus: player.timeControlStatus)
-        closeScreen()
     }
 }
 

@@ -15,8 +15,8 @@ class ItemIntent {
 
     // MARK: Model
 
-    private let model: ItemModelActionsProtocol
-    private let routeModel: ItemModelRouterProtocol
+    private weak var model: ItemModelActionsProtocol?
+    private weak var routeModel: ItemModelRouterProtocol?
 
     // MARK: Busines Data
 
@@ -38,16 +38,16 @@ class ItemIntent {
 extension ItemIntent: ItemIntentProtocol {
 
     func viewOnAppear() {
-        model.setupScreen(url: externalData.url, title: externalData.title)
-        model.play()
+        model?.setupScreen(url: externalData.url, title: externalData.title)
+        model?.play()
     }
 
     func viewonDisappear() {
-        model.stop()
+        model?.stop()
     }
 
     func didTapPlaying() {
-        model.togglePlaing()
+        model?.togglePlaing()
     }
 }
 
