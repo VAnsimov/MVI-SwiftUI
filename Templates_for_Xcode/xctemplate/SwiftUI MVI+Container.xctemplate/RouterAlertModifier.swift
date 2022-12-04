@@ -1,5 +1,6 @@
 //
 //  RouterAlertModifier.swift
+//  MVI-SwiftUI
 //
 //  Created by Vyacheslav Ansimov.
 //
@@ -10,14 +11,14 @@ import Combine
 protocol RouterAlertScreenProtocol {}
 
 struct RouterAlertModifier<ScreenType> where ScreenType: RouterAlertScreenProtocol {
-
+    
     // MARK: Public
-
+    
     let publisher: AnyPublisher<ScreenType, Never>
     let alert: (ScreenType) -> Alert
 
     // MARK: Private
-
+    
     @State private var screenType: ScreenType?
 }
 

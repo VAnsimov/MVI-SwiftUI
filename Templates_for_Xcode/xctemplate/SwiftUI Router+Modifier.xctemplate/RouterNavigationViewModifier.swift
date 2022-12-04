@@ -1,5 +1,6 @@
 //
-//  RouterNavigationModifier.swift
+//  RouterNavigationViewModifier.swift
+//  MVI-SwiftUI
 //
 //  Created by Vyacheslav Ansimov.
 //
@@ -7,24 +8,24 @@
 import SwiftUI
 import Combine
 
-protocol RouterNavigationScreenProtocol {}
+protocol RouterNavigationViewScreenProtocol {}
 
-struct RouterNavigationModifier<Screen, ScreenType> where Screen: View, ScreenType: RouterNavigationScreenProtocol {
-
+struct RouterNavigationViewModifier<Screen, ScreenType> where Screen: View, ScreenType: RouterNavigationViewScreenProtocol {
+    
     // MARK: Public
-
+    
     let publisher: AnyPublisher<ScreenType, Never>
     var screen: (ScreenType) -> Screen
     let onDismiss: ((ScreenType) -> Void)?
-
+    
     // MARK: Private
-
+    
     @State private var screenType: ScreenType?
 }
 
 // MARK: - ViewModifier
 
-extension RouterNavigationModifier: ViewModifier {
+extension RouterNavigationViewModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         ZStack {
@@ -47,6 +48,7 @@ extension RouterNavigationModifier: ViewModifier {
                 })
 
             content
-        }.onReceive(publisher) { screenType = $0 }
+        }
+        .onReceive(publisher) { screenType = $0 }
     }
 }

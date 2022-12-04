@@ -1,5 +1,6 @@
 //
 //  RouterProtocol.swift
+//  MVI-SwiftUI
 //
 //  Created by Vyacheslav Ansimov.
 //
@@ -27,10 +28,14 @@ protocol RouterProtocol: ViewModifier {
 extension RouterProtocol {
     func body(content: Content) -> some View {
         content
-            .modifier(RouterNavigationModifier(
+            .modifier(RouterNavigationViewModifier(
                 publisher: subjects.screen.filter { $0.routeType == .navigationLink }.eraseToAnyPublisher(),
                 screen: makeScreen,
                 onDismiss: onDismiss))
+            .modifier(RouterNavigationStackModifier(
+                    publisher: subjects.screen.filter { $0.routeType == .navigationDestination }.eraseToAnyPublisher(),
+                    screen: makeScreen,
+                    onDismiss: onDismiss))
             .modifier(RouterAlertModifier(
                 publisher: subjects.alert.eraseToAnyPublisher(),
                 alert: makeAlert))

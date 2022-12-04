@@ -59,8 +59,7 @@ File -> New -> File...
 
 ### Router
 
-Take the classes from the Templates-for-Xcode/Router folder and transfer them to your project
-
+The template can be found in Templates-for-Xcode/xctemplate
 
 ## Maintainers
 

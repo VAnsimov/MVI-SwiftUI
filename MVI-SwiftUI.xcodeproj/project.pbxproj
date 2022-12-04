@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B82B43328CD9B3A00622105 /* RouterSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */; };
-		9B82B43628CD9B3A00622105 /* RouterNavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42828CD9B3A00622105 /* RouterNavigationModifier.swift */; };
+		9B82B43628CD9B3A00622105 /* RouterNavigationStackModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42828CD9B3A00622105 /* RouterNavigationStackModifier.swift */; };
 		9B82B43728CD9B3A00622105 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */; };
 		9B82B43928CDAC8900622105 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */; };
 		9B82B43B28CDB55B00622105 /* ListView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43A28CDB55B00622105 /* ListView+Build.swift */; };
@@ -18,6 +18,7 @@
 		9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44928CED71B00622105 /* ItemTypes.swift */; };
 		9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */; };
 		9BA0B40B28CF20FA00B3F215 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9BA0B40A28CF20FA00B3F215 /* README.md */; };
+		9BC955CB293CB2E600627B1E /* RouterNavigationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC955CA293CB2E600627B1E /* RouterNavigationViewModifier.swift */; };
 		C021768726F313B5004149AE /* MVI_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */; };
 		C021768B26F313B7004149AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768A26F313B7004149AE /* Assets.xcassets */; };
 		C021768E26F313B7004149AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768D26F313B7004149AE /* Preview Assets.xcassets */; };
@@ -42,7 +43,7 @@
 
 /* Begin PBXFileReference section */
 		9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterSheetModifier.swift; sourceTree = "<group>"; };
-		9B82B42828CD9B3A00622105 /* RouterNavigationModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterNavigationModifier.swift; sourceTree = "<group>"; };
+		9B82B42828CD9B3A00622105 /* RouterNavigationStackModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterNavigationStackModifier.swift; sourceTree = "<group>"; };
 		9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
 		9B82B43A28CDB55B00622105 /* ListView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+Build.swift"; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		9B82B44928CED71B00622105 /* ItemTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypes.swift; sourceTree = "<group>"; };
 		9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterScreenProtocol.swift; sourceTree = "<group>"; };
 		9BA0B40A28CF20FA00B3F215 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9BC955CA293CB2E600627B1E /* RouterNavigationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterNavigationViewModifier.swift; sourceTree = "<group>"; };
 		C021768326F313B5004149AE /* MVI-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVI-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVI_SwiftUIApp.swift; sourceTree = "<group>"; };
 		C021768A26F313B7004149AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +113,8 @@
 			children = (
 				9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */,
 				9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */,
-				9B82B42828CD9B3A00622105 /* RouterNavigationModifier.swift */,
+				9B82B42828CD9B3A00622105 /* RouterNavigationStackModifier.swift */,
+				9BC955CA293CB2E600627B1E /* RouterNavigationViewModifier.swift */,
 				9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */,
 			);
 			path = Modifier;
@@ -374,7 +377,7 @@
 				C02176C426F36FAA004149AE /* WWDCUrlService.swift in Sources */,
 				9B82B43328CD9B3A00622105 /* RouterSheetModifier.swift in Sources */,
 				C02176C026F315A8004149AE /* MVIContainer.swift in Sources */,
-				9B82B43628CD9B3A00622105 /* RouterNavigationModifier.swift in Sources */,
+				9B82B43628CD9B3A00622105 /* RouterNavigationStackModifier.swift in Sources */,
 				C02176B426F314D8004149AE /* ListModel.swift in Sources */,
 				C02176B526F314D8004149AE /* ListModelProtocol.swift in Sources */,
 				C02176DE26F38380004149AE /* ItemModel.swift in Sources */,
@@ -386,6 +389,7 @@
 				9B82B44628CE111200622105 /* ItemView+Build.swift in Sources */,
 				9B82B43728CD9B3A00622105 /* RouterCloseModifier.swift in Sources */,
 				C02176C926F3748F004149AE /* WWDCUrlServiceProtocol.swift in Sources */,
+				9BC955CB293CB2E600627B1E /* RouterNavigationViewModifier.swift in Sources */,
 				9B82B44428CE09B700622105 /* RouterProtocol.swift in Sources */,
 				9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */,
 				9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */,

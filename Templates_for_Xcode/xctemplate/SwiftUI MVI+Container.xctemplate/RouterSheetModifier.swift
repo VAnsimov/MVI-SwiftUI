@@ -1,5 +1,6 @@
 //
 //  RouterSheetModifier.swift
+//  MVI-SwiftUI
 //
 //  Created by Vyacheslav Ansimov.
 //
@@ -20,7 +21,7 @@ struct RouterSheetModifier<Screen, ScreenType> where Screen: View, ScreenType: R
 
 
     // MARK: Private
-
+    
     @State private var screenType: ScreenType?
 }
 
