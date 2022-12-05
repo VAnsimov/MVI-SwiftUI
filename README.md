@@ -36,7 +36,7 @@ Container is independent of the life cycle of the View because it is @StateObjec
 
 ![](README_sources/image_003.png)
 
-Между модулям однонаправленный поток данных. 
+There is a unidirectional data flow between the modules.
 
 1) View receives the user's event.
 2) Intent receives an event from View and communicates with the business logic
