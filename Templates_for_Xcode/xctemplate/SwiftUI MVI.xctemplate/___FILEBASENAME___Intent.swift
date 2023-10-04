@@ -7,7 +7,6 @@ class ___VARIABLE_sceneName___Intent {
     // MARK: Model
 
     private weak var model: ___VARIABLE_sceneName___ModelActionsProtocol?
-    private weak var routeModel: ___VARIABLE_sceneName___ModelRouterProtocol?
 
     // MARK: Busines Data
 
@@ -15,11 +14,12 @@ class ___VARIABLE_sceneName___Intent {
 
     // MARK: Life cycle
 
-    init(model: ___VARIABLE_sceneName___ModelActionsProtocol & ___VARIABLE_sceneName___ModelRouterProtocol,
-         externalData: ExternalData) {
+    init(
+		model: ___VARIABLE_sceneName___ModelActionsProtocol,
+		externalData: ExternalData
+	) {
         self.externalData = externalData
         self.model = model
-        self.routeModel = model
     }
 
 }

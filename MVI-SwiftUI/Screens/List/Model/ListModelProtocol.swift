@@ -14,7 +14,7 @@ protocol ListModelStatePotocol {
     var loadingText: String { get }
     var navigationTitle: String { get }
 
-    var routerSubject: ListRouter.Subjects { get }
+	var routerEvents: ListRouter.RouterEventsType { get }
 }
 
 // MARK: - Intent Actions

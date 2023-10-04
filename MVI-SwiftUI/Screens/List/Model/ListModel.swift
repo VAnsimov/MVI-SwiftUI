@@ -13,7 +13,7 @@ final class ListModel: ObservableObject, ListModelStatePotocol {
 
     let loadingText = "Loading"
     let navigationTitle = "SwiftUI Videos"
-    let routerSubject = ListRouter.Subjects()
+	let routerEvents = ListRouter.RouterEventsType()
 }
 
 // MARK: - Actions Protocol
@@ -41,7 +41,7 @@ extension ListModel: ListModelActionsProtocol {
 extension ListModel: ListModelRouterProtocol {
 
     func routeToVideoPlayer(content: WWDCUrlContent) {
-        routerSubject.screen.send(.videoPlayer(title: content.title, url: content.url))
+		routerEvents.routeTo(.videoPlayer(title: content.title, url: content.url))
     }
 }
 

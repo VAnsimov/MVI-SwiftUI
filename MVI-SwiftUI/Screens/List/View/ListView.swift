@@ -19,18 +19,18 @@ struct ListView: View {
             ZStack {
                 switch state.contentState {
                 case .loading:
-                    LoadingContent(text: state.loadingText)
+					loadingView
 
                 case let .content(urlContents):
-                    ListItems(intent: intent, urlContents: urlContents)
+					listItemsView(urlContents: urlContents)
 
                 case let .error(text):
-                    ErrorContent(text: text)
+					errorView(text: text)
                 }
             }
             .onAppear(perform: intent.viewOnAppear)
             .navigationTitle(state.navigationTitle)
-            .modifier(ListRouter(subjects: state.routerSubject, intent: intent))
+            .modifier(ListRouter(routerEvents: state.routerEvents, intent: intent))
         }
     }
 }
@@ -39,51 +39,35 @@ struct ListView: View {
 
 private extension ListView {
 
-    // MARK: Loading View
+    // Loading View
+	var loadingView: some View {
+		ZStack {
+			Color.white
+			Text(state.loadingText)
+		}
+	}
 
-    private struct LoadingContent: View {
-        let text: String
+    // ListItems View
+	func listItemsView(urlContents: [ListUrlContentView.StateViewModel]) -> some View {
+		ScrollView {
+			LazyVStack(spacing: 16) {
+				ForEach(urlContents, id: \.self) {
+					ListUrlContentView(state: $0, didTap: {
+						intent.onTapUrlContent(id: $0)
+					})
+					.padding(.horizontal)
+				}
+			}.padding(.vertical)
+		}
+	}
 
-        var body: some View {
-            ZStack {
-                Color.white
-                Text(text)
-            }
-        }
-    }
-
-    // MARK: ListItems View
-
-    private struct ListItems: View {
-        let intent: ListIntentProtocol
-        let urlContents: [ListUrlContentView.StateViewModel]
-
-        var body: some View {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(urlContents, id: \.self) {
-                        ListUrlContentView(state: $0, didTap: {
-                            intent.onTapUrlContent(id: $0)
-                        })
-                        .padding(.horizontal)
-                    }
-                }.padding(.vertical)
-            }
-        }
-    }
-
-    // MARK: Error View
-
-    private struct ErrorContent: View {
-        let text: String
-
-        var body: some View {
-            ZStack {
-                Color.white
-                Text(text)
-            }
-        }
-    }
+    // Error View
+	func errorView(text: String) -> some View {
+		ZStack {
+			Color.white
+			Text(text)
+		}
+	}
 }
 
 #if DEBUG

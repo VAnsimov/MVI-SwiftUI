@@ -13,7 +13,7 @@ protocol ItemModelStatePotocol {
     var title: String { get }
     var playingText: String { get }
     var player: AVPlayer { get }
-    var routerSubject: ItemRouter.Subjects { get }
+	var routerEvents: ItemRouter.RouterEventsType { get }
 }
 
 // MARK: - Intent Actions
@@ -28,5 +28,5 @@ protocol ItemModelActionsProtocol: AnyObject {
 // MARK: - Route
 
 protocol ItemModelRouterProtocol: AnyObject {
-    func closeScreen()
+    func dismissScreen()
 }

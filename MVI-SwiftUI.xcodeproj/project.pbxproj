@@ -3,22 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B82B43328CD9B3A00622105 /* RouterSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */; };
-		9B82B43628CD9B3A00622105 /* RouterNavigationStackModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42828CD9B3A00622105 /* RouterNavigationStackModifier.swift */; };
-		9B82B43728CD9B3A00622105 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */; };
-		9B82B43928CDAC8900622105 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */; };
+		13446CFF2ACDBF920081E7F3 /* Router in Frameworks */ = {isa = PBXBuildFile; productRef = 13446CFE2ACDBF920081E7F3 /* Router */; };
 		9B82B43B28CDB55B00622105 /* ListView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43A28CDB55B00622105 /* ListView+Build.swift */; };
-		9B82B44428CE09B700622105 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44328CE09B700622105 /* RouterProtocol.swift */; };
 		9B82B44628CE111200622105 /* ItemView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44528CE111200622105 /* ItemView+Build.swift */; };
 		9B82B44828CE15AA00622105 /* ListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44728CE15AA00622105 /* ListTypes.swift */; };
 		9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44928CED71B00622105 /* ItemTypes.swift */; };
-		9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */; };
 		9BA0B40B28CF20FA00B3F215 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9BA0B40A28CF20FA00B3F215 /* README.md */; };
-		9BC955CB293CB2E600627B1E /* RouterNavigationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC955CA293CB2E600627B1E /* RouterNavigationViewModifier.swift */; };
 		C021768726F313B5004149AE /* MVI_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */; };
 		C021768B26F313B7004149AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768A26F313B7004149AE /* Assets.xcassets */; };
 		C021768E26F313B7004149AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C021768D26F313B7004149AE /* Preview Assets.xcassets */; };
@@ -42,18 +36,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterSheetModifier.swift; sourceTree = "<group>"; };
-		9B82B42828CD9B3A00622105 /* RouterNavigationStackModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterNavigationStackModifier.swift; sourceTree = "<group>"; };
-		9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
-		9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
 		9B82B43A28CDB55B00622105 /* ListView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+Build.swift"; sourceTree = "<group>"; };
-		9B82B44328CE09B700622105 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		9B82B44528CE111200622105 /* ItemView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemView+Build.swift"; sourceTree = "<group>"; };
 		9B82B44728CE15AA00622105 /* ListTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTypes.swift; sourceTree = "<group>"; };
 		9B82B44928CED71B00622105 /* ItemTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypes.swift; sourceTree = "<group>"; };
-		9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterScreenProtocol.swift; sourceTree = "<group>"; };
 		9BA0B40A28CF20FA00B3F215 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		9BC955CA293CB2E600627B1E /* RouterNavigationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterNavigationViewModifier.swift; sourceTree = "<group>"; };
 		C021768326F313B5004149AE /* MVI-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVI-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C021768626F313B5004149AE /* MVI_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVI_SwiftUIApp.swift; sourceTree = "<group>"; };
 		C021768A26F313B7004149AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,12 +70,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13446CFF2ACDBF920081E7F3 /* Router in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		135121392ACD9FCA00580A3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9B82B41428CD9A2000622105 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,23 +96,8 @@
 		9B82B42428CD9B3A00622105 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				9B82B44328CE09B700622105 /* RouterProtocol.swift */,
-				9BA0B40528CF067000B3F215 /* RouterScreenProtocol.swift */,
-				9BA0B40928CF06F800B3F215 /* Modifier */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		9BA0B40928CF06F800B3F215 /* Modifier */ = {
-			isa = PBXGroup;
-			children = (
-				9B82B43828CDAC8800622105 /* RouterAlertModifier.swift */,
-				9B82B42928CD9B3A00622105 /* RouterCloseModifier.swift */,
-				9B82B42828CD9B3A00622105 /* RouterNavigationStackModifier.swift */,
-				9BC955CA293CB2E600627B1E /* RouterNavigationViewModifier.swift */,
-				9B82B42528CD9B3A00622105 /* RouterSheetModifier.swift */,
-			);
-			path = Modifier;
 			sourceTree = "<group>";
 		};
 		C021767A26F313B5004149AE = {
@@ -126,6 +106,7 @@
 				9BA0B40A28CF20FA00B3F215 /* README.md */,
 				C021768526F313B5004149AE /* MVI-SwiftUI */,
 				C021768426F313B5004149AE /* Products */,
+				135121392ACD9FCA00580A3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,6 +294,9 @@
 			dependencies = (
 			);
 			name = "MVI-SwiftUI";
+			packageProductDependencies = (
+				13446CFE2ACDBF920081E7F3 /* Router */,
+			);
 			productName = "MVI-SwiftUI";
 			productReference = C021768326F313B5004149AE /* MVI-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -323,8 +307,9 @@
 		C021767B26F313B5004149AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					C021768226F313B5004149AE = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -375,9 +360,7 @@
 				C02176DA26F38380004149AE /* ItemIntentProtocol.swift in Sources */,
 				C02176B326F314D8004149AE /* ListView.swift in Sources */,
 				C02176C426F36FAA004149AE /* WWDCUrlService.swift in Sources */,
-				9B82B43328CD9B3A00622105 /* RouterSheetModifier.swift in Sources */,
 				C02176C026F315A8004149AE /* MVIContainer.swift in Sources */,
-				9B82B43628CD9B3A00622105 /* RouterNavigationStackModifier.swift in Sources */,
 				C02176B426F314D8004149AE /* ListModel.swift in Sources */,
 				C02176B526F314D8004149AE /* ListModelProtocol.swift in Sources */,
 				C02176DE26F38380004149AE /* ItemModel.swift in Sources */,
@@ -387,15 +370,10 @@
 				C02176DF26F38380004149AE /* ItemModelProtocol.swift in Sources */,
 				C02176CE26F3771C004149AE /* ListUrlContentView.swift in Sources */,
 				9B82B44628CE111200622105 /* ItemView+Build.swift in Sources */,
-				9B82B43728CD9B3A00622105 /* RouterCloseModifier.swift in Sources */,
 				C02176C926F3748F004149AE /* WWDCUrlServiceProtocol.swift in Sources */,
-				9BC955CB293CB2E600627B1E /* RouterNavigationViewModifier.swift in Sources */,
-				9B82B44428CE09B700622105 /* RouterProtocol.swift in Sources */,
 				9B82B44A28CED72200622105 /* ItemTypes.swift in Sources */,
-				9BA0B40628CF067000B3F215 /* RouterScreenProtocol.swift in Sources */,
 				C021768726F313B5004149AE /* MVI_SwiftUIApp.swift in Sources */,
 				C02176D826F38380004149AE /* ItemIntent.swift in Sources */,
-				9B82B43928CDAC8900622105 /* RouterAlertModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +417,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -500,6 +479,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -528,7 +508,7 @@
 				DEVELOPMENT_TEAM = SB522NQPTN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MVI-SwiftUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,7 +530,7 @@
 				DEVELOPMENT_TEAM = SB522NQPTN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MVI-SwiftUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,6 +564,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13446CFE2ACDBF920081E7F3 /* Router */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Router;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C021767B26F313B5004149AE /* Project object */;
 }

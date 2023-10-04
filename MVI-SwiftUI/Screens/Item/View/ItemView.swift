@@ -19,7 +19,7 @@ struct ItemView: View {
         bodyView()
             .onAppear(perform: intent.viewOnAppear)
             .navigationBarTitle(state.title, displayMode: .inline)
-            .modifier(ItemRouter(subjects: state.routerSubject, intent: intent))
+			.modifier(ItemRouter(routerEvents: state.routerEvents, intent: intent))
             .onDisappear(perform: intent.viewOnDisappear)
     }
 }
