@@ -68,98 +68,121 @@ The template can be found in Templates-for-Xcode/xctemplate
 
 Below is the most complete version, if you don't need something, you don't have to write it.
 
+Steps:
+
+- We need to implement RouterModifierProtocol is ViewModifier in your router.
+- Create a `enum` for the list of screens the View will open to. It should implement the `RouterScreenProtocol` protocol.
+- Implement the functions getScreenPresentationType(for:), getScreen(for:), onScreenDismiss(type:) in your router
+- Create a `enum` for the list of alerts that the View will display. It should implement the `RouterAlertScreenProtocol` protocol.
+- Implement the functions getAlertTitle(for:), getAlertMessage(for:), getAlertActions(for:) in your router
+
+
 ```swift
-struct SomeRouter: RouterProtocol {
-     let routerEvents: RouterEvents<ScreenType, AlertType>
+
+struct SomeRouter: RouterModifierProtocol {
+    let routerEvents: RouterEvents<SomeRouteScreenType, SomeRouterAlertType>
 }
 
 // MARK: - Screens
 
+enum SomeRouterScreenType: RouterScreenProtocol {
+    case screenOne
+    case screenTwo(id: UUID)
+    case screenThree
+    case screenFour
+    case screenFive
+}
+
 extension SomeRouter {
-     enum ScreenType: RouterScreenProtocol {
-         case videoPlayer
-         case group(id: UUID)
-     }
 
-	 // Optional
-	 // Default is .sheet
-     func getRouteType(for type: ScreenType) -> RouterScreenPresentationType {
-         switch type {
-         case .videoPlayer:
-             return .navigationDestination
+    // Optional
+    @ViewBuilder
+    func getScreen(for type: SomeRouterScreenType) -> some View {
+        switch type {
+        case .screenOne:
+            return Text("Screen One")
+            
+        case let .screenTwo(id):
+            return Text("Screen Two with id: \(id.uuidString)")
+            
+        case .screenThree:
+            return Text("Screen Three")
+            
+        case .screenFour:
+            return Text("Screen Four")
+            
+        case .screenFive:
+            return Text("Screen Five")
+        }
+    }
+    
+    // Optional
+    func getScreenPresentationType(for type: SomeRouterScreenType) -> RouterScreenPresentationType {
+        switch type {
+        case .screenOne, .screenThree, .screenFour:
+            return .fullScreenCover
+            
+        case .screenTwo, .screenFive:
+            return .navigationDestination
+            
+        case .screenFour:
+            return .sheet
+        }
+    }
 
-         case .group:
-             return .sheet
-         }
-     }
-
-	 // Optional
-	 // Default is Empty()
-     @ViewBuilder
-     func makeScreen(for type: ScreenType) -> some View {
-         switch type {
-         case .videoPlayer:
-             Text("VideoPlayer View")
-
-         case let .group(id):
-             Text("Group View")
-         }
-     }
-
-	 // Optional
-     func onDismiss(screenType: ScreenType) {}
+    // Optional
+    func onScreenDismiss(type: SomeRouterScreenType) {}
 }
 
 // MARK: - Alerts
 
+enum SomeRouterAlertType: RouterAlertScreenProtocol {
+    case error(title: String, message: String)
+}
+
 extension SomeRouter {
 
-     enum AlertType: RouterAlertScreenProtocol {
-         case error(title: String, message: String)
-     }
+    // Optional
+    func getAlertTitle(for type: SomeRouterAlertType) -> Text? {
+        switch type {
+        case let .error(title, _):
+            return Text(title)
+        }
+    }
 
-	 // Optional
-	 // Default is nil
-     func makeTitle(for type: AlertType) -> Text? {
-         switch type {
-         case let .error(title, _):
-             return Text(title)
-         }
-     }
+    // Optional
+    func getAlertMessage(for type: SomeRouterAlertType) -> some View {
+        switch type {
+        case let .error(_, message):
+            return Text(message)
+        }
+    }
 
-	 // Optional
-	 // Default is Empty()
-     func makeMessage(for type: AlertType) -> some View {
-         switch type {
-         case let .error(_, message):
-             return Text(message)
-         }
-     }
-
-	 // Optional
-	 // Default is Empty()
-     func makeActions(for type: AlertType) -> some View {
-         Text("OK")
-     }
- }
+    // Optional
+    func getAlertActions(for type: SomeRouterAlertType) -> some View {
+        Text("OK")
+    }
+}
 ```
 
 If you don't need Alerts, you can use `RouterDefaultAlert`
 
 ```swift
-struct SomeRouter: RouterProtocol {
-     let routerEvents: RouterEvents<ScreenType, RouterDefaultAlert>
+struct SomeRouter: RouterModifierProtocol {
+     let routerEvents: RouterEvents<SomeRouterScreenType, RouterDefaultAlert>
 }
 
 // MARK: - Screens
 
-extension SomeRouter {
+enum SomeRouterScreenType: RouterScreenProtocol {
+    case screenOne
+    case screenTwo(id: UUID)
+    case screenThree
+    case screenFour
+    case screenFive
+}
 
-     enum ScreenType: RouterScreenProtocol {
-         case videoPlayer
-         case group(id: UUID)
-     }
-     
+extension SomeRouter {
      ...
 }
 ```
@@ -168,17 +191,17 @@ If you do not need to go to other screens, then use `RouterEmptyScreen`
 
 
 ```swift
-struct SomeRouter: RouterProtocol {
-     let routerEvents: RouterEvents<RouterEmptyScreen, AlertType>
+struct SomeRouter: RouterModifierProtocol {
+     let routerEvents: RouterEvents<RouterEmptyScreen, SomeRouterAlertType>
 }
 
 // MARK: - Alerts
 
+enum SomeRouterAlertType: RouterAlertScreenProtocol {
+    case error(title: String, message: String)
+}
+
 extension SomeRouter {
-     enum AlertType: RouterAlertScreenProtocol {
-          case error(title: String, message: String)
-     }
-     
      ...
 }
 ```
@@ -188,28 +211,19 @@ extension SomeRouter {
 ```swift
 struct SomeView: View {
 
-    ...
+    let routerEvents = RouterEvents<SomeRouterScreenType, SomeRouterAlertType>()
 
     var body: some View {
         Text("Hello, World!")
-            .modifier(SomeRouter(routerEvents: someClass.routerEvents))
-    }
-}
-
-class SomeClass: ObservableObject {
-
-    let routerEvents = RouterEvents<SomeRouter.ScreenType, SomeRouter.AlertType>()
-
-    func someOperation() {
-        routerEvents.routeTo(.group(id: UUID()))
-    }
-    
-	func someError() {
-        routerEvents.presentAlert(.error(title: "Error", message: "Something went wrong"))
+            .modifier(SomeRouter(routerEvents: routerEvents))
+            .onAppear {
+                routerEvents.routeTo(.screenTwo(id: UUID()))
+            }
     }
 }
 ```
 
-## Maintainers
+
+# Maintainers
 
 * [Vyacheslav Ansimov](https://www.linkedin.com/in/vansimov/)

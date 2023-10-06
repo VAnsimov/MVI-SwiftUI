@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13446CFF2ACDBF920081E7F3 /* Router in Frameworks */ = {isa = PBXBuildFile; productRef = 13446CFE2ACDBF920081E7F3 /* Router */; };
+		13446D2E2AD1308F0081E7F3 /* RouterModifier in Frameworks */ = {isa = PBXBuildFile; productRef = 13446D2D2AD1308F0081E7F3 /* RouterModifier */; };
 		9B82B43B28CDB55B00622105 /* ListView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B43A28CDB55B00622105 /* ListView+Build.swift */; };
 		9B82B44628CE111200622105 /* ItemView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44528CE111200622105 /* ItemView+Build.swift */; };
 		9B82B44828CE15AA00622105 /* ListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82B44728CE15AA00622105 /* ListTypes.swift */; };
@@ -70,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13446CFF2ACDBF920081E7F3 /* Router in Frameworks */,
+				13446D2E2AD1308F0081E7F3 /* RouterModifier in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,17 +87,9 @@
 		9B82B41428CD9A2000622105 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
-				9B82B42428CD9B3A00622105 /* Router */,
 				C02176BF26F315A8004149AE /* MVIContainer.swift */,
 			);
 			path = Utilites;
-			sourceTree = "<group>";
-		};
-		9B82B42428CD9B3A00622105 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		C021767A26F313B5004149AE = {
@@ -295,7 +287,7 @@
 			);
 			name = "MVI-SwiftUI";
 			packageProductDependencies = (
-				13446CFE2ACDBF920081E7F3 /* Router */,
+				13446D2D2AD1308F0081E7F3 /* RouterModifier */,
 			);
 			productName = "MVI-SwiftUI";
 			productReference = C021768326F313B5004149AE /* MVI-SwiftUI.app */;
@@ -566,9 +558,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		13446CFE2ACDBF920081E7F3 /* Router */ = {
+		13446D2D2AD1308F0081E7F3 /* RouterModifier */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Router;
+			productName = RouterModifier;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

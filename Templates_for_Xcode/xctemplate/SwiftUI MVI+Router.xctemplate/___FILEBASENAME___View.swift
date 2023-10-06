@@ -11,6 +11,7 @@ struct ___VARIABLE_sceneName___View: View {
 
     var body: some View {
         Text(state.text)
+			.modifier(___VARIABLE_sceneName___Router(routerEvents: state.routerEvents, intent: intent))
             .onAppear(perform: intent.viewOnAppear)
             .onDisappear(perform: intent.viewOnDisappear)
     }

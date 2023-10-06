@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import Router
+import RouterModifier
 
-struct ItemRouter: RouterProtocol {
+struct ItemRouter: RouterModifierProtocol {
 	typealias RouterEventsType = RouterEvents<RouterEmptyScreen, RouterDefaultAlert>
 
 	let routerEvents: RouterEventsType

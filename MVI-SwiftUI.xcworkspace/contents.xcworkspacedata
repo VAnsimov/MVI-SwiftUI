@@ -8,7 +8,7 @@
       location = "container:"
       name = "MyLibraries">
       <FileRef
-         location = "group:MyLibraries/Router">
+         location = "group:MyLibraries/RouterModifier">
       </FileRef>
    </Group>
 </Workspace>

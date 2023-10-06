@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import Router
+import RouterModifier
 
-struct ListRouter: RouterProtocol {
-	typealias RouterEventsType = RouterEvents<ScreenType, AlertType>
+struct ListRouter: RouterModifierProtocol {
+	typealias RouterEventsType = RouterEvents<ListRouterScreenType, ListRouterAlertType>
 
 	let routerEvents: RouterEventsType
     let intent: ListIntentProtocol
@@ -17,12 +17,13 @@ struct ListRouter: RouterProtocol {
 
 // MARK: - Screens
 
-extension ListRouter {
-    enum ScreenType: RouterScreenProtocol {
-        case videoPlayer(title: String, url: URL)
-    }
+enum ListRouterScreenType: RouterScreenProtocol {
+	case videoPlayer(title: String, url: URL)
+}
 
-	func getRouteType(for type: ScreenType) -> RouterScreenPresentationType {
+extension ListRouter {
+
+	func getScreenPresentationType(for type: ListRouterScreenType) -> RouterScreenPresentationType {
 		switch type {
 		case .videoPlayer:
 			return .navigationLink
@@ -30,39 +31,40 @@ extension ListRouter {
 	}
 
     @ViewBuilder
-    func makeScreen(for type: ScreenType) -> some View {
+    func getScreen(for type: ListRouterScreenType) -> some View {
         switch type {
         case let .videoPlayer(title, url):
             ItemView.build(data: .init(title: title, url: url))
         }
     }
 
-    func onDismiss(screenType: ScreenType) {}
+    func onScreenDismiss(type: ListRouterScreenType) {}
 }
 
 
 // MARK: - Alerts
 
-extension ListRouter {
-	enum AlertType: RouterAlertScreenProtocol {
-		case error(title: String, message: String)
-	}
+enum ListRouterAlertType: RouterAlertScreenProtocol {
+	case error(title: String, message: String)
+}
 
-	func makeTitle(for type: AlertType) -> Text? {
+extension ListRouter {
+
+	func getAlertTitle(for type: ListRouterAlertType) -> Text? {
 		switch type {
 		case let .error(title, _):
 			return Text(title)
 		}
 	}
 
-	func makeMessage(for type: AlertType) -> some View {
+	func getAlertMessage(for type: ListRouterAlertType) -> some View {
 		switch type {
 		case let .error(_, message):
 			return Text(message)
 		}
 	}
 	
-	func makeActions(for type: AlertType) -> some View {
+	func getAlertActions(for type: ListRouterAlertType) -> some View {
 		Text("OK")
 	}
 }
