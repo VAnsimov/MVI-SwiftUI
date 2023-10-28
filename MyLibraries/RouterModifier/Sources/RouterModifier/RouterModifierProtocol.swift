@@ -65,19 +65,21 @@ import SwiftUI
 ///     func getAlertTitle(for type: SomeRouterAlertType) -> Text? {
 ///         switch type {
 ///         case let .error(title, _):
-///             return Text(title)
+///             Text(title)
 ///         }
 ///     }
 ///
 ///     // Optional
+///     @ViewBuilder
 ///     func geteAlertMessage(for type: SomeRouterAlertType) -> some View {
 ///         switch type {
 ///         case let .error(_, message):
-///             return Text(message)
+///             Text(message)
 ///         }
 ///     }
 ///
 ///     // Optional
+///     @ViewBuilder
 ///     func getAlertActions(for type: SomeRouterAlertType) -> some View {
 ///         Text("OK")
 ///     }
@@ -118,17 +120,7 @@ public protocol RouterModifierProtocol: ViewModifier {
 
 	// MARK: Alerts
 
-	@available(iOS 15.0, *, macOS 12.0, *)
 	func getAlertTitle(for type: RouterAlertType) -> Text?
-
-	@available(iOS 15.0, *, macOS 12.0, *)
 	func getAlertMessage(for type: RouterAlertType) -> AlertMessageView
-
-	@available(iOS 15.0, *, macOS 12.0, *)
 	func getAlertActions(for type: RouterAlertType) -> AlertActionsView
-
-	// Deprecated
-	@available(iOS, introduced: 13.0, deprecated: 15.0, message: "use getAlertActions(for:), getAlertMessage(for:), getAlertActions(for:)")
-	@available(macOS, introduced: 10.15, deprecated: 12.0, message: "use getAlertActions(for:), getAlertMessage(for:), getAlertActions(for:)")
-	func getOldAlert(for type: RouterAlertType) -> Alert
 }

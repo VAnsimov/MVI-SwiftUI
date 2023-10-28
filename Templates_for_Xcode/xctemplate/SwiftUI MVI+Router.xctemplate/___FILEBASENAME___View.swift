@@ -31,18 +31,17 @@ struct ___VARIABLE_sceneName___View: View {
 #if DEBUG
 // MARK: - Previews
 
-struct ___VARIABLE_sceneName___View_Previews: PreviewProvider {
-    static var previews: some View {
-        ___VARIABLE_sceneName___View.build(data: .init())
-    }
+#Preview {
+    ___VARIABLE_sceneName___View.build(data: .init())
 }
 #endif
 
-/*
+// MARK: - MVIContainer
+
 import SwiftUI
 import Combine
 
-final class MVIContainer<Intent, Model>: ObservableObject {
+final private class MVIContainer<Intent, Model>: ObservableObject {
 
 	// MARK: Public
 
@@ -65,4 +64,3 @@ final class MVIContainer<Intent, Model>: ObservableObject {
 			.store(in: &cancellable)
 	}
 }
-*/

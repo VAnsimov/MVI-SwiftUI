@@ -59,8 +59,7 @@ File -> New -> File...
 
 ### Router
 
-The template can be found in Templates-for-Xcode/xctemplate
-
+The router is in Swift Package Manager and can be copied and reused in your projects
 
 # How to use Router?
 
@@ -86,47 +85,22 @@ struct SomeRouter: RouterModifierProtocol {
 // MARK: - Screens
 
 enum SomeRouterScreenType: RouterScreenProtocol {
-    case screenOne
-    case screenTwo(id: UUID)
-    case screenThree
-    case screenFour
-    case screenFive
+    case productScreen(id: UUID)
 }
 
 extension SomeRouter {
 
     // Optional
+    func getScreenPresentationType(for type: SomeRouterScreenType) -> RouterScreenPresentationType {
+        .fullScreenCover
+    }
+
+    // Optional
     @ViewBuilder
     func getScreen(for type: SomeRouterScreenType) -> some View {
         switch type {
-        case .screenOne:
-            return Text("Screen One")
-            
-        case let .screenTwo(id):
-            return Text("Screen Two with id: \(id.uuidString)")
-            
-        case .screenThree:
-            return Text("Screen Three")
-            
-        case .screenFour:
-            return Text("Screen Four")
-            
-        case .screenFive:
-            return Text("Screen Five")
-        }
-    }
-    
-    // Optional
-    func getScreenPresentationType(for type: SomeRouterScreenType) -> RouterScreenPresentationType {
-        switch type {
-        case .screenOne, .screenThree, .screenFour:
-            return .fullScreenCover
-            
-        case .screenTwo, .screenFive:
-            return .navigationDestination
-            
-        case .screenFour:
-            return .sheet
+        case let .productScreen(id):
+            Text("Product Screen View: \(id.uuidString)")
         }
     }
 
@@ -151,16 +125,29 @@ extension SomeRouter {
     }
 
     // Optional
+    @ViewBuilder
     func getAlertMessage(for type: SomeRouterAlertType) -> some View {
         switch type {
         case let .error(_, message):
-            return Text(message)
+            Text(message)
         }
     }
 
     // Optional
+    @ViewBuilder
     func getAlertActions(for type: SomeRouterAlertType) -> some View {
-        Text("OK")
+        switch type {
+        case .error:
+            VSTack {
+                Button(role: .destructive) {
+                    // Handle the deletion.
+                } label: { Text("Delete \(details.name)") }
+                
+                Button("Retry") {
+                    // Handle the retry action.
+                }
+            }
+        }
     }
 }
 ```
@@ -175,11 +162,7 @@ struct SomeRouter: RouterModifierProtocol {
 // MARK: - Screens
 
 enum SomeRouterScreenType: RouterScreenProtocol {
-    case screenOne
-    case screenTwo(id: UUID)
-    case screenThree
-    case screenFour
-    case screenFive
+    case productScreen(id: UUID)
 }
 
 extension SomeRouter {
@@ -217,7 +200,7 @@ struct SomeView: View {
         Text("Hello, World!")
             .modifier(SomeRouter(routerEvents: routerEvents))
             .onAppear {
-                routerEvents.routeTo(.screenTwo(id: UUID()))
+                routerEvents.routeTo(.group(id: UUID()))
             }
     }
 }

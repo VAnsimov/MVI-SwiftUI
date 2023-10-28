@@ -19,7 +19,7 @@ where Actions: View, Message: View, ScreenType: RouterAlertScreenProtocol {
 	let title: (ScreenType) -> Text?
 	let message: (ScreenType) -> Message?
     let actions: (ScreenType) -> Actions?
-	let oldAlert: (ScreenType) -> Alert
+
 
     // MARK: Private
     
@@ -52,31 +52,19 @@ where Actions: View, Message: View, ScreenType: RouterAlertScreenProtocol {
 extension RouterAlertModifier: ViewModifier {
 
 	func body(content: Content) -> some View {
-		if #available(iOS 15.0, *, macOS 12.0, *) {
-			content
-				.alert(
-					titleText,
-					isPresented: isPresented,
-					actions: {
-						if let type = screenType, let actionsView = actions(type) {
-							actionsView
-						} else {
-							EmptyView()
-						}
-					},
-					message: { messageView }
-				)
-				.onReceive(publisher) { screenType = $0 }
-		} else {
-			content
-				.alert(isPresented: isPresented, content: {
-					if let type = screenType {
-						oldAlert(type)
-					} else {
-						Alert(title: Text(""))
-					}
-				})
-				.onReceive(publisher) { screenType = $0 }
-		}
+        content
+            .alert(
+                titleText,
+                isPresented: isPresented,
+                actions: {
+                    if let type = screenType, let actionsView = actions(type) {
+                        actionsView
+                    } else {
+                        EmptyView()
+                    }
+                },
+                message: { messageView }
+            )
+            .onReceive(publisher) { screenType = $0 }
     }
 }

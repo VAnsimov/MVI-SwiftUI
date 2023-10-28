@@ -13,7 +13,8 @@ where ScreenType: RouterScreenProtocol, AlertType: RouterAlertScreenProtocol {
 	let screenSubject = PassthroughSubject<ScreenType, Never>()
 	let alertSubject = PassthroughSubject<AlertType, Never>()
 	let dismissSubject = PassthroughSubject<Void, Never>()
-
+    let oldAlertSubject = PassthroughSubject<AlertType, Never>()
+    
 	public init() {}
 
 	public func routeTo(_ type: ScreenType) {
@@ -21,7 +22,11 @@ where ScreenType: RouterScreenProtocol, AlertType: RouterAlertScreenProtocol {
 	}
 
 	public func presentAlert(_ type: AlertType) {
-		alertSubject.send(type)
+        if #available(iOS 15.0, *, macOS 12.0, *) {
+            alertSubject.send(type)
+        } else {
+            oldAlertSubject.send(type)
+        }
 	}
 
 	public func dismiss() {

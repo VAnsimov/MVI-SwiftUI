@@ -61,10 +61,10 @@ extension RouterModifierProtocol {
 					.receive(on: RunLoop.main)
 					.eraseToAnyPublisher(),
 				title: getAlertTitle,
-				message: getAlertMessage,
-				actions: getAlertActions,
-				oldAlert: getOldAlert
+                message: getAlertMessage,
+				actions: getAlertActions
 			))
+
 	}
 }
 
@@ -100,21 +100,8 @@ public extension RouterModifierProtocol {
 		(type as? RouterDefaultAlert).map { type in
 			switch type {
 			case let .defaultAlert(_, _, cancelText):
-				return Text(cancelText)
+                return Button(role: .cancel, action: {}, label: { Text(cancelText) })
 			}
 		}
-	}
-
-	func getOldAlert(for type: RouterAlertType) -> Alert {
-		(type as? RouterDefaultAlert).map { type in
-			switch type {
-			case let .defaultAlert(title, message, cancelText):
-				return Alert (
-					title: Text(title ?? ""),
-					message: message.map { Text($0) },
-					dismissButton: .cancel(Text(cancelText))
-				)
-			}
-		} ?? Alert(title: Text(""))
 	}
 }

@@ -1,17 +1,23 @@
 //___FILEHEADER___
 
 import SwiftUI
+import DesignSystem
 
-// MARK: - View State
-
-protocol ___VARIABLE_sceneName___ModelStatePotocol {
-    var text: String { get set }
+protocol ___VARIABLE_sceneName___MapperProtocol {
+    func getDefaultViewState() -> ___VARIABLE_sceneName___View.ViewState
 }
 
-// MARK: - Intent Actions
+class ___VARIABLE_sceneName___Mapper {
+    init() {}
+}
 
-protocol ___VARIABLE_sceneName___ModelActionsProtocol: AnyObject {
-    func dispalyLoading()
-    func dispaly(content: Int)
-    func dispaly(error: Error)
+// MARK: - Public
+
+extension ___VARIABLE_sceneName___Mapper: ___VARIABLE_sceneName___MapperProtocol {
+
+    func getDefaultViewState() -> ___VARIABLE_sceneName___View.ViewState {
+        ___VARIABLE_sceneName___View.ViewState(
+           text: ""
+       )
+    }
 }

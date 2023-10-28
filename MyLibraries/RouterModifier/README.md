@@ -67,16 +67,29 @@ extension SomeRouter {
     }
 
     // Optional
+    @ViewBuilder
     func getAlertMessage(for type: SomeRouterAlertType) -> some View {
         switch type {
         case let .error(_, message):
-            return Text(message)
+            Text(message)
         }
     }
 
     // Optional
+    @ViewBuilder
     func getAlertActions(for type: SomeRouterAlertType) -> some View {
-        Text("OK")
+        switch type {
+        case .error:
+            VSTack {
+                Button(role: .destructive) {
+                    // Handle the deletion.
+                } label: { Text("Delete \(details.name)") }
+                
+                Button("Retry") {
+                    // Handle the retry action.
+                }
+            }
+        }
     }
 }
 ```
