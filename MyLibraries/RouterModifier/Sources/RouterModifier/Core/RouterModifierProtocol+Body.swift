@@ -9,63 +9,107 @@ import SwiftUI
 
 extension RouterModifierProtocol {
 
-	public func body(content: Content) -> some View {
-		content
-			.modifier(RouterNavigationDestinationModifier(
-				publisher: routerEvents.screenSubject
-					.filter {
-						if #available(iOS 16.0, *, macOS 13.0, *) {
-							return getScreenPresentationType(for: $0) == .navigationDestination
-						} else {
-							return false
-						}
-					}
-					.receive(on: RunLoop.main)
-					.eraseToAnyPublisher(),
-				screen: getScreen,
-				onDismiss: onScreenDismiss
-			))
-			.modifier(RouterNavigationLinkModifier(
-				publisher: routerEvents.screenSubject
-					.filter { getScreenPresentationType(for: $0) == .navigationLink }
-					.receive(on: RunLoop.main)
-					.eraseToAnyPublisher(),
-				screen: getScreen,
-				onDismiss: onScreenDismiss
-			))
-			.modifier(RouterDismissModifier(
-				publisher: routerEvents.dismissSubject
-					.receive(on: RunLoop.main)
-					.eraseToAnyPublisher()
-			))
-			.modifier(RouterSheetModifier(
-				isFullScreenCover: false,
-				publisher: routerEvents.screenSubject
-					.filter { getScreenPresentationType(for: $0) == .sheet }
-					.receive(on: RunLoop.main)
-					.eraseToAnyPublisher(),
-				screen: getScreen,
-				onDismiss: onScreenDismiss
-			))
-			.modifier(RouterSheetModifier(
-				isFullScreenCover: true,
-				publisher: routerEvents.screenSubject
-					.filter { getScreenPresentationType(for: $0) == .fullScreenCover }
-					.receive(on: RunLoop.main)
-					.eraseToAnyPublisher(),
-				screen: getScreen,
-				onDismiss: onScreenDismiss
-			))
-			.modifier(RouterAlertModifier(
-				publisher: routerEvents.alertSubject
-					.receive(on: RunLoop.main)
-					.eraseToAnyPublisher(),
-				title: getAlertTitle,
-                message: getAlertMessage,
-				actions: getAlertActions
-			))
+    public func body(content: Content) -> some View {
+        content
+            .modifier(navigationDestinationModifier)
+            .modifier(navigationLinkModifier)
+            .modifier(sheetModifier)
+            .modifier(fullScreenCoverModifier)
+            .modifier(alertModifier)
+            .modifier(dismissModifier)
+    }
+}
 
-	}
+// MARK: - Modifiers
+
+private extension RouterModifierProtocol {
+
+    var navigationDestinationModifier: some ViewModifier {
+        ConditionalModifier(
+            isEmpty: routerEvents.screenIsEmpty,
+            viewModifier: {
+                RouterNavigationDestinationModifier(
+                    publisher: routerEvents.screenSubject
+                        .filter {
+                            if #available(iOS 16.0, *, macOS 13.0, *) {
+                                return getScreenPresentationType(for: $0) == .navigationDestination
+                            } else {
+                                return false
+                            }
+                        }
+                        .receive(on: RunLoop.main)
+                        .eraseToAnyPublisher(),
+                    screen: getScreen,
+                    onDismiss: onScreenDismiss
+                )
+            })
+    }
+
+    var navigationLinkModifier: some ViewModifier {
+        ConditionalModifier(
+            isEmpty: routerEvents.screenIsEmpty,
+            viewModifier: {
+                RouterNavigationLinkModifier(
+                    publisher: routerEvents.screenSubject
+                        .filter { getScreenPresentationType(for: $0) == .navigationLink }
+                        .receive(on: RunLoop.main)
+                        .eraseToAnyPublisher(),
+                    screen: getScreen,
+                    onDismiss: onScreenDismiss
+                )
+            })
+    }
+
+    var sheetModifier: some ViewModifier {
+        ConditionalModifier(
+            isEmpty: routerEvents.screenIsEmpty,
+            viewModifier: {
+                RouterSheetModifier(
+                    isFullScreenCover: false,
+                    publisher: routerEvents.screenSubject
+                        .filter { getScreenPresentationType(for: $0) == .sheet }
+                        .receive(on: RunLoop.main)
+                        .eraseToAnyPublisher(),
+                    screen: getScreen,
+                    onDismiss: onScreenDismiss
+                )
+            })
+    }
+
+    var fullScreenCoverModifier: some ViewModifier {
+        ConditionalModifier(
+            isEmpty: routerEvents.screenIsEmpty,
+            viewModifier: {
+                RouterSheetModifier(
+                    isFullScreenCover: true,
+                    publisher: routerEvents.screenSubject
+                        .filter { getScreenPresentationType(for: $0) == .fullScreenCover }
+                        .receive(on: RunLoop.main)
+                        .eraseToAnyPublisher(),
+                    screen: getScreen,
+                    onDismiss: onScreenDismiss
+                )
+            })
+    }
+
+    var alertModifier: some ViewModifier {
+        RouterAlertModifier(
+            publisher: routerEvents.alertSubject
+                .receive(on: RunLoop.main)
+                .eraseToAnyPublisher(),
+            title: getAlertTitle,
+            message: getAlertMessage,
+            actions: getAlertActions
+        )
+    }
+
+    var dismissModifier: some ViewModifier {
+        RouterDismissModifier(
+            publisher: routerEvents.dismissSubject
+                .receive(on: RunLoop.main)
+                .eraseToAnyPublisher()
+        )
+    }
 }
 
 // MARK: - Default values
@@ -104,4 +148,20 @@ public extension RouterModifierProtocol {
 			}
 		}
 	}
+}
+
+// MARK: - Helper classes
+
+private struct ConditionalModifier<Modifier>: ViewModifier where Modifier: ViewModifier {
+
+    var isEmpty: Bool
+    var viewModifier: () -> Modifier
+
+    func body(content: Content) -> some View {
+        if isEmpty {
+            content.modifier(EmptyModifier())
+        } else {
+            content.modifier(viewModifier())
+        }
+    }
 }

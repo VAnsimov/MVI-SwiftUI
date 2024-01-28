@@ -41,7 +41,7 @@ where ScreenView: View, ScreenType: RouterNavigationDestinationScreenProtocol {
 extension RouterNavigationDestinationModifier: ViewModifier {
 
 	func body(content: Content) -> some View {
-		if #available(iOS 16.0, *, macOS 13.0, *) {
+        if #available(iOS 16.0, *, macOS 13.0, *) {
 			content
 				.navigationDestination(
 					isPresented: isPresented,

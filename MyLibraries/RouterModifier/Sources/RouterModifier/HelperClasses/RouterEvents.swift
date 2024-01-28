@@ -15,6 +15,8 @@ where ScreenType: RouterScreenProtocol, AlertType: RouterAlertScreenProtocol {
 	let dismissSubject = PassthroughSubject<Void, Never>()
     let oldAlertSubject = PassthroughSubject<AlertType, Never>()
     
+    var screenIsEmpty: Bool { screenSubject is PassthroughSubject<RouterEmptyScreen, Never> }
+
 	public init() {}
 
 	public func routeTo(_ type: ScreenType) {
