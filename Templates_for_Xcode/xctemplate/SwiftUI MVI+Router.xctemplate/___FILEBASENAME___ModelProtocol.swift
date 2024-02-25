@@ -12,14 +12,10 @@ protocol ___VARIABLE_sceneName___ModelStatePotocol {
 // MARK: - Intent Actions
 
 protocol ___VARIABLE_sceneName___ModelActionsProtocol: AnyObject {
-    func dispalyLoading()
-    func dispaly(content: Int)
-    func dispaly(error: Error)
-}
+    func displayLoading()
+    func display(content: Int)
+    func display(error: Error)
 
-// MARK: - Intent Route
-
-protocol ___VARIABLE_sceneName___ModelRouteProtocol: AnyObject {
-	func routeSameScreen()
-	func showErrorAlert()
+    func routeTo(screen: ___VARIABLE_sceneName___ScreenType)
+    func show(alert: ___VARIABLE_sceneName___AlertType)
 }

@@ -4,20 +4,18 @@ import SwiftUI
 
 class ___VARIABLE_sceneName___Intent {
 
-    // MARK: Model
-
+    // Model
     private weak var model: ___VARIABLE_sceneName___ModelActionsProtocol?
 	private weak var routeModel: ___VARIABLE_sceneName___ModelRouteProtocol?
 
-    // MARK: Busines Data
-
-    private let externalData: ExternalData
+    // Busines Data
+    private let externalData: ___VARIABLE_sceneName___ExternalData
 
     // MARK: Life cycle
 
     init(
 		model: ___VARIABLE_sceneName___ModelActionsProtocol & ___VARIABLE_sceneName___ModelRouteProtocol,
-		externalData: ExternalData
+		externalData: ___VARIABLE_sceneName___ExternalData
 	) {
         self.externalData = externalData
         self.model = model
@@ -31,18 +29,12 @@ class ___VARIABLE_sceneName___Intent {
 extension ___VARIABLE_sceneName___Intent: ___VARIABLE_sceneName___IntentProtocol {
 
     func viewOnAppear() {
-        model?.dispalyLoading()
+        model?.displayLoading()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.model?.dispaly(content: Int.random(in: 0 ..< 100))
+            self.model?.display(content: Int.random(in: 0 ..< 100))
         }
     }
 
     func viewOnDisappear() {}
-}
-
-// MARK: - Helper classes
-
-extension ___VARIABLE_sceneName___Intent {
-    struct ExternalData {}
 }

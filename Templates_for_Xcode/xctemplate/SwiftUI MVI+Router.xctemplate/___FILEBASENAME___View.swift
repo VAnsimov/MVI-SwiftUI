@@ -2,29 +2,34 @@
 
 import SwiftUI
 
-struct ___VARIABLE_sceneName___View: View {
+struct ___VARIABLE_sceneName___View {
 
     @StateObject var container: MVIContainer<___VARIABLE_sceneName___IntentProtocol, ___VARIABLE_sceneName___ModelStatePotocol>
 
     private var intent: ___VARIABLE_sceneName___IntentProtocol { container.intent }
     private var state: ___VARIABLE_sceneName___ModelStatePotocol { container.model }
 
-    var body: some View {
-        Text(state.text)
-			.modifier(___VARIABLE_sceneName___Router(routerEvents: state.routerEvents, intent: intent))
-            .onAppear(perform: intent.viewOnAppear)
-            .onDisappear(perform: intent.viewOnDisappear)
-    }
-
-    static func build(data: ___VARIABLE_sceneName___Intent.ExternalData) -> some View {
+    init(data: ___VARIABLE_sceneName___ExternalData) {
         let model = ___VARIABLE_sceneName___Model()
         let intent = ___VARIABLE_sceneName___Intent(model: model, externalData: data)
-        let container = MVIContainer(
+
+        self._container = StateObject(wrappedValue: MVIContainer(
             intent: intent as ___VARIABLE_sceneName___IntentProtocol,
             model: model as ___VARIABLE_sceneName___ModelStatePotocol,
-            modelChangePublisher: model.objectWillChange)
-        let view = ___VARIABLE_sceneName___View(container: container)
-        return view
+            modelChangePublisher: model.objectWillChange
+        ))
+    }
+}
+
+// MARK: - View
+
+extension ___VARIABLE_sceneName___View: View {
+
+    var body: some View {
+        Text(state.text)
+            .modifier(___VARIABLE_sceneName___Router(routerEvents: state.routerEvents, intent: intent))
+            .onAppear(perform: intent.viewOnAppear)
+            .onDisappear(perform: intent.viewOnDisappear)
     }
 }
 
@@ -32,7 +37,7 @@ struct ___VARIABLE_sceneName___View: View {
 // MARK: - Previews
 
 #Preview {
-    ___VARIABLE_sceneName___View.build(data: .init())
+    ___VARIABLE_sceneName___View(data: ___VARIABLE_sceneName___ExternalData())
 }
 #endif
 

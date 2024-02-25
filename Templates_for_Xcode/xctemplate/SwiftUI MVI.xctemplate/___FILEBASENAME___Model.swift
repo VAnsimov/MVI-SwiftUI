@@ -11,17 +11,15 @@ final class ___VARIABLE_sceneName___Model: ObservableObject, ___VARIABLE_sceneNa
 
 extension ___VARIABLE_sceneName___Model: ___VARIABLE_sceneName___ModelActionsProtocol {
 
-    func dispalyLoading() {
-        text = "loading"
-    }
+	func displayLoading() {
+		text = "loading"
+	}
 
-    func dispaly(content: Int) {
-        text = "That number is " + String(content)
-    }
+	func display(content: Int) {
+		text = "That number is " + String(content)
+	}
 
-    func dispaly(error: Error) {
-        text = "Error"
-    }
+	func display(error: Error) {
+		text = "Error"
+	}
 }
-
-

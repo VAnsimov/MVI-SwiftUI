@@ -1,46 +1,37 @@
 //___FILEHEADER___
 
 import SwiftUI
-import DesignSystem
 
-class ___VARIABLE_sceneName___ViewModel: ObservableObject {
+class ___VARIABLE_sceneName___Intent {
 
-    // State
-    @Published var state: ___VARIABLE_sceneName___View.ViewState
-    var routerEvents = ___VARIABLE_sceneName___Router.RouterEventsType()
-
-    // Dependencies
-    private let mapper: ___VARIABLE_sceneName___MapperProtocol
+    // Model
+    private weak var model: ___VARIABLE_sceneName___ModelActionsProtocol?
 
     // Busines Data
-    private let externalData: ExternalData
+    private let externalData: ___VARIABLE_sceneName___ExternalData
 
     // MARK: Life cycle
 
     init(
-        externalData: ___VARIABLE_sceneName___ViewModel.ExternalData,
-        mapper: ___VARIABLE_sceneName___MapperProtocol
-    ) {
+		model: ___VARIABLE_sceneName___ModelActionsProtocol,
+		externalData: ___VARIABLE_sceneName___ExternalData
+	) {
         self.externalData = externalData
-        self.mapper = mapper
-
-        state = mapper.getDefaultViewState()
+        self.model = model
     }
 }
 
 // MARK: - Public
 
-extension ___VARIABLE_sceneName___ViewModel {
+extension ___VARIABLE_sceneName___Intent: ___VARIABLE_sceneName___IntentProtocol {
 
     func viewOnAppear() {
-        state.text = "Hello, World!"
+        model?.displayLoading()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.model?.display(content: Int.random(in: 0 ..< 100))
+        }
     }
 
     func viewOnDisappear() {}
-}
-
-// MARK: - Helper classes
-
-extension ___VARIABLE_sceneName___ViewModel {
-    struct ExternalData {}
 }

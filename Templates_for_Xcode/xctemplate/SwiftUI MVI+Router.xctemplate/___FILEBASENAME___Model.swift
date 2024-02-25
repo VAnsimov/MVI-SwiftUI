@@ -13,30 +13,24 @@ final class ___VARIABLE_sceneName___Model: ObservableObject, ___VARIABLE_sceneNa
 
 extension ___VARIABLE_sceneName___Model: ___VARIABLE_sceneName___ModelActionsProtocol {
 
-	func dispalyLoading() {
+	func displayLoading() {
 		text = "loading"
 	}
 
-	func dispaly(content: Int) {
+	func display(content: Int) {
 		text = "That number is " + String(content)
 	}
 
-	func dispaly(error: Error) {
+	func display(error: Error) {
 		text = "Error"
 	}
+
+    func routeTo(screen: ___VARIABLE_sceneName___ScreenType) {
+        routerEvents.routeTo(screen)
+    }
+
+    func show(alert: ___VARIABLE_sceneName___AlertType) {
+        routerEvents.presentAlert(alert)
+    }
 }
-
-// MARK: - Route Protocol
-
-extension ___VARIABLE_sceneName___Model: ___VARIABLE_sceneName___ModelRouteProtocol {
-
-	func routeSameScreen() {
-		routerEvents.routeTo(.sameScreen)
-	}
-
-	func showErrorAlert() {
-		routerEvents.presentAlert(.error(title: "Error", message: "Something went wrong"))
-	}
-}
-
 
